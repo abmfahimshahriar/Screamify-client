@@ -1,4 +1,4 @@
-export interface Scream {
+export interface ScreamModel {
     body: string;
     commentCount: number;
     createdAt: string;

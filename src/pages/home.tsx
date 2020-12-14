@@ -2,10 +2,13 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
-import {Scream} from './models/home';
+// import models
+import { ScreamModel } from "../models/home";
+// import components
+import Scream from "../components/Scream";
 
 interface State {
-  screams: Scream[]
+  screams: ScreamModel[];
 }
 class home extends React.Component<State> {
   state: State = {
@@ -26,7 +29,7 @@ class home extends React.Component<State> {
   render() {
     let recentScreamsMarkup = this.state.screams ? (
       this.state.screams.map((scream) => (
-        <p key={scream.screamId}>{scream.body}</p>
+        <Scream key={scream.screamId} scream={scream} />
       ))
     ) : (
       <p>Loading...</p>
