@@ -13,6 +13,10 @@ import signup from "./pages/signup/signup";
 import NavBar from "./components/Navbar/Navbar";
 import AuthRoute from "./util/components/AuthRoute";
 
+// redux
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
 const theme = createMuiTheme(globalTheme);
 
 let authenticated: boolean;
@@ -26,8 +30,7 @@ if (token) {
   } else {
     authenticated = true;
   }
-}
-else {
+} else {
   authenticated = false;
 }
 
@@ -35,24 +38,26 @@ function App() {
   return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
-        <Router>
-          <NavBar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={home} />
-              <AuthRoute
-                path="/login"
-                component={login}
-                authenticated={authenticated}
-              />
-              <AuthRoute
-                path="/signup"
-                component={signup}
-                authenticated={authenticated}
-              />
-            </Switch>
-          </div>
-        </Router>
+        <Provider store={store}>
+          <Router>
+            <NavBar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={home} />
+                <AuthRoute
+                  path="/login"
+                  component={login}
+                  authenticated={authenticated}
+                />
+                <AuthRoute
+                  path="/signup"
+                  component={signup}
+                  authenticated={authenticated}
+                />
+              </Switch>
+            </div>
+          </Router>
+        </Provider>
       </MuiThemeProvider>
     </div>
   );
