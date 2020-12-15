@@ -9,7 +9,7 @@ import home from "./pages/home/home";
 import login from "./pages/login/login";
 import signup from "./pages/signup/signup";
 // components
-import NavBar from "./components/Navbar";
+import NavBar from "./components/Navbar/Navbar";
 
 const theme = createMuiTheme(globalTheme);
 

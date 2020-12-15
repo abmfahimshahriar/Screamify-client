@@ -5,7 +5,7 @@ import axios from "axios";
 // import models
 import { ScreamModel } from "../../models/home";
 // import components
-import Scream from "../../components/Scream";
+import Scream from "../../components/Scream/Scream";
 
 interface State {
   screams: ScreamModel[];
