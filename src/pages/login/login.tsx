@@ -1,8 +1,9 @@
 import React, { FormEvent } from "react";
 import { RouteProps } from "react-router";
-import AppIcon from "../images/monkey-icon.png";
+import AppIcon from "../../images/monkey-icon.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { loginStyle} from "./loginStyle";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
@@ -11,34 +12,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const styles = {
-  form: {
-    textAlign: "center" as const,
-  },
-  image: {
-    margin: "20px auto 20px auto",
-    width: "48px",
-    height: "48px",
-  },
-  pageTitle: {
-    margin: "10px auto 10px auto",
-  },
-  textField: {
-    margin: "10px auto 10px auto",
-  },
-  button: {
-    marginTop: 20,
-    position: 'relative' as const,
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8rem",
-    marginTop: 10,
-  },
-  progress: {
-    position: 'absolute' as const,
-  },
-};
+const styles = loginStyle;
 
 type Props = {
   classes: any;
@@ -47,18 +21,14 @@ type Props = {
 interface State {
   email: string;
   password: string;
-  confirmPassword: string;
-  handle: string;
   loading: boolean;
   errors: any;
 }
 
-class signup extends React.Component<Props & RouteProps, State> {
+class login extends React.Component<Props & RouteProps, State> {
   state: State = {
     email: "",
     password: "",
-    confirmPassword: "",
-    handle: "",
     loading: false,
     errors: {},
   };
@@ -68,17 +38,14 @@ class signup extends React.Component<Props & RouteProps, State> {
       loading: true,
     });
     console.log(this.state);
-    const newUserData = {
+    const userData = {
       email: this.state.email,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword,
-      handle: this.state.handle
     };
     axios
-      .post("/signup", newUserData)
+      .post("/login", userData)
       .then((res) => {
-        localStorage.setItem('FBIdToken', `Bearer ${res.data.token.i}`)
-        console.log(res.data);
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`)
         this.setState({
           loading: false,
         });
@@ -107,7 +74,7 @@ class signup extends React.Component<Props & RouteProps, State> {
         <Grid item sm>
           <img src={AppIcon} alt="monkey" className={classes.image} />
           <Typography variant="h2" className={classes.pageTitle}>
-            Signup
+            Login
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
@@ -134,30 +101,6 @@ class signup extends React.Component<Props & RouteProps, State> {
               onChange={this.handleChange}
               fullWidth
             />
-            <TextField
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              label="Confirm Password"
-              className={classes.textField}
-              helperText={errors.confirmPassword}
-              error={errors.confirmPassword ? true : false}
-              value={this.state.confirmPassword}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="handle"
-              name="handle"
-              type="text"
-              label="Handle"
-              className={classes.textField}
-              helperText={errors.handle}
-              error={errors.handle ? true : false}
-              value={this.state.handle}
-              onChange={this.handleChange}
-              fullWidth
-            />
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
@@ -170,13 +113,13 @@ class signup extends React.Component<Props & RouteProps, State> {
               className={classes.button}
               disabled={loading}
             >
-              Signup
+              Login
               {loading && (
                 <CircularProgress size={30} className={classes.progress}/>
               )}
             </Button>
             <br/>
-            <small>Already have an account ? login <Link to="/login">here</Link></small>
+            <small>Don't have an account ? sign up <Link to="/signup">here</Link></small>
           </form>
         </Grid>
         <Grid item sm />
@@ -185,4 +128,4 @@ class signup extends React.Component<Props & RouteProps, State> {
   }
 }
 
-export default withStyles(styles)(signup);
+export default withStyles(styles)(login);
