@@ -23,7 +23,7 @@ class home extends React.Component<State> {
         });
       })
       .catch((err) => {
-        console.error(err);
+        console.error(err); 
       });
   }
   render() {
