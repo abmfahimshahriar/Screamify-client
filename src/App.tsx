@@ -28,6 +28,7 @@ const theme = createMuiTheme({
   // typography: {
   //   useNextVariants: true
   // },
+  
 })
 
 function App() {

@@ -71,6 +71,7 @@ class login extends React.Component<Props & RouteProps, State> {
     axios
       .post("/login", userData)
       .then((res) => {
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`)
         this.setState({
           loading: false,
         });
