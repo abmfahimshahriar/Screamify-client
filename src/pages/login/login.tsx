@@ -38,6 +38,11 @@ class login extends React.Component<Props & RouteProps, State> {
     password: "",
     errors: {},
   };
+  componentWillReceiveProps(nextProps:any) {
+    if(nextProps.UI.errors) {
+      this.setState({errors: nextProps.UI.errors});
+    }
+  }
   handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(this.state);
