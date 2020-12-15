@@ -27,7 +27,7 @@ class home extends React.Component<State> {
       });
   }
   render() {
-    let recentScreamsMarkup = this.state.screams ? (
+    let recentScreamsMarkup = this.state.screams.length > 0 ? (
       this.state.screams.map((scream) => (
         <Scream key={scream.screamId} scream={scream} />
       ))
