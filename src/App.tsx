@@ -5,6 +5,7 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import { globalTheme } from "./util/theme";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
 // pages
 import home from "./pages/home/home";
 import login from "./pages/login/login";
@@ -16,22 +17,24 @@ import AuthRoute from "./util/components/AuthRoute";
 // redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { SET_AUTHENTICATED } from "./redux/types";
+import { logoutUser, getUserData } from "./redux/actions/userActions";
+
 
 const theme = createMuiTheme(globalTheme);
 
-let authenticated: boolean;
+;
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken: any = jwtDecode(token);
-  console.log(decodedToken);
   if (decodedToken.exp * 1000 < Date.now()) {
+    store.dispatch(logoutUser());
     window.location.href = "/login";
-    authenticated = false;
   } else {
-    authenticated = true;
+    store.dispatch({type : SET_AUTHENTICATED});
+    axios.defaults.headers.common["Authorization"] = token;
+    store.dispatch(getUserData);
   }
-} else {
-  authenticated = false;
 }
 
 function App() {
@@ -47,12 +50,10 @@ function App() {
                 <AuthRoute
                   path="/login"
                   component={login}
-                  authenticated={authenticated}
                 />
                 <AuthRoute
                   path="/signup"
                   component={signup}
-                  authenticated={authenticated}
                 />
               </Switch>
             </div>

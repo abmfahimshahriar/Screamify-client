@@ -1,7 +1,6 @@
 import React, { FormEvent } from "react";
 import { RouteProps } from "react-router";
 import AppIcon from "../../images/monkey-icon.png";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { signupStyle } from "./signupStyle";
 // MUI imports
