@@ -3,6 +3,7 @@ import {
   SET_ERRORS,
   CLEAR_ERRORS,
   LOADING_UI,
+  LOADING_USER,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
 } from "../types";
@@ -12,6 +13,7 @@ const initialState = {
   credentials: [],
   likes: [],
   notifications: [],
+  loading: false,
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -27,7 +29,13 @@ export default function (state = initialState, action: any) {
     case SET_USER:
       return {
         authenticated: true,
+        loading: false,
         ...action.payload,
+      };
+    case LOADING_USER:
+      return {
+        ...state,
+        loading: true
       };
     default:
       return state;

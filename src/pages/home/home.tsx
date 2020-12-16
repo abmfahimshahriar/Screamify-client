@@ -6,7 +6,7 @@ import axios from "axios";
 import { ScreamModel } from "../../models/home";
 // import components
 import Scream from "../../components/Scream/Scream";
-
+import Profile from "../../components/Profile/Profile";
 interface State {
   screams: ScreamModel[];
 }
@@ -40,7 +40,7 @@ class home extends React.Component<State> {
           {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>Profile....</p>
+          <Profile/>
         </Grid>
       </Grid>
     );
