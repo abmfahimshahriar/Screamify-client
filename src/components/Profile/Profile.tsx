@@ -12,21 +12,22 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import Edit from "@material-ui/icons/Edit";
+import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 // import models
 import { UserData } from "../../models/home";
 // redux
 import { connect } from "react-redux";
-import {uploadImage,logoutUser} from "../../redux/actions/userActions";
+import { uploadImage, logoutUser } from "../../redux/actions/userActions";
 
 const styles = profileStyle;
 
 type Props = {
   classes: any;
   user: UserData;
-  uploadImage: Function,
-  logoutUser: Function
+  uploadImage: Function;
+  logoutUser: Function;
 };
 
 class Profile extends React.Component<Props> {
@@ -35,11 +36,14 @@ class Profile extends React.Component<Props> {
     fileInput?.click();
   };
   handleImageChange = (event: any) => {
-      const image = event.target.files[0];
-      const formData = new FormData();
-      formData.append('image',image,image.name);
-      this.props.uploadImage(formData);
+    const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image, image.name);
+    this.props.uploadImage(formData);
   };
+  handleLogout = () => {
+      this.props.logoutUser();
+  }
   render() {
     const hidden = true;
     const {
@@ -101,6 +105,11 @@ class Profile extends React.Component<Props> {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")} </span>
             </div>
+            <Tooltip title="Edit profile picture" placement="top">
+              <IconButton onClick={this.handleLogout} className="button">
+                <KeyboardReturn color="primary" />
+              </IconButton>
+            </Tooltip>
           </div>
         </Paper>
       ) : (
@@ -140,8 +149,11 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapActionsToProps = {
-    uploadImage,
-    logoutUser
-  }
+  uploadImage,
+  logoutUser,
+};
 
-export default connect(mapStateToProps,mapActionsToProps)(withStyles(styles)(Profile));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Profile));
