@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { profileStyle } from "./profileStyle";
+import EditDetails from "../EditDetails/EditDetails";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Paper from "@material-ui/core/Paper";
@@ -105,11 +106,12 @@ class Profile extends React.Component<Props> {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")} </span>
             </div>
-            <Tooltip title="Edit profile picture" placement="top">
+            <Tooltip title="Logout" placement="top">
               <IconButton onClick={this.handleLogout} className="button">
                 <KeyboardReturn color="primary" />
               </IconButton>
             </Tooltip>
+            <EditDetails/>
           </div>
         </Paper>
       ) : (

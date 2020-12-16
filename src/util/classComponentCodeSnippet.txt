@@ -1,0 +1,32 @@
+import React from "react";
+import {editDetailsStyle} from "./editDetailsStyles";
+// MUI imports
+import withStyles from "@material-ui/core/styles/withStyles";
+
+// redux
+import { connect } from "react-redux";
+
+const styles = editDetailsStyle;
+
+type Props = {
+  classes: any;
+};
+
+class EditDetails extends React.Component<Props> {
+    render() {
+        return <div></div>
+    }
+}
+
+
+const mapStateToProps = (state: any) => ({
+  });
+  
+  const mapActionsToProps = {
+  };
+  
+  export default connect(
+    mapStateToProps,
+    mapActionsToProps
+  )(withStyles(styles)(EditDetails));
+  
