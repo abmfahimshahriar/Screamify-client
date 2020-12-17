@@ -4,6 +4,7 @@ import {
   LIKE_SCREAM,
   UNLIKE_SCREAM,
   DELETE_SCREAM,
+  POST_SCREAM,
 } from "../types";
 interface State {
   screams: any[];
@@ -46,6 +47,14 @@ export default function (state = initialState, action: any) {
       state.screams.splice(ind, 1);
       return {
         ...state,
+      };
+    case POST_SCREAM:
+      return {
+        ...state,
+        screams: [
+          action.payload,
+          ...state.screams
+        ]
       };
     default:
       return state;
