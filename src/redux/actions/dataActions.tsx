@@ -90,3 +90,8 @@ export const deleteScream = (screamId: string) => (dispatch: any) => {
     })
     .catch((err) => console.log(err));
 };
+
+
+export const clearErrors = () => (dispatch:any) => {
+  dispatch({type: CLEAR_ERRORS})
+}

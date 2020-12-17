@@ -16,13 +16,14 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 // redux
 import { connect } from "react-redux";
-import { postScream } from "../../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 const styles = postScreamStyle;
 
 type Props = {
   classes: any;
   postScream: Function;
   UI: any;
+  clearErrors: Function;
 };
 
 interface State {
@@ -50,6 +51,7 @@ class PostScream extends React.Component<Props, State> {
     this.setState({ open: true });
   };
   handleClose = () => {
+    this.props.postScream();
     this.setState({ open: false, errors: {} });
   };
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -135,6 +137,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapActionsToProps = {
   postScream,
+  clearErrors
 };
 
 export default connect(

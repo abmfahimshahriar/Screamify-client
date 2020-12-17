@@ -1,7 +1,7 @@
 export const postScreamStyle = {
     closeButton: {
       position: "absolute" as const,
-      top: "4%" as const,
+      top: "3%" as const,
       left: "90%" as const,
     },
     textField: {
@@ -13,6 +13,7 @@ export const postScreamStyle = {
     submitButton: { 
       marginTop: 20,
       position: "relative" as const,
+      float: 'right' as const,
     },
   };
   
