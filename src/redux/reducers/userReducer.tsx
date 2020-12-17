@@ -6,11 +6,34 @@ import {
   LOADING_USER,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
+  LIKE_SCREAM,
+  UNLIKE_SCREAM,
 } from "../types";
+interface Like {
+  userHandle: string;
+  screamId: string;
+}
+interface UserCredential {
+  handle?: string;
+  userId?: string;
+  imageUrl?: string;
+  createdAt?: any;
+  location?: string;
+  email?: string;
+  website?: string;
+  bio?: string;
+}
+interface State {
+  authenticated: boolean;
+  credentials: UserCredential;
+  likes: Like[];
+  notifications: any[];
+  loading: boolean;
+}
 
-const initialState = {
+const initialState: State = {
   authenticated: false,
-  credentials: [],
+  credentials: {},
   likes: [],
   notifications: [],
   loading: false,
@@ -35,7 +58,24 @@ export default function (state = initialState, action: any) {
     case LOADING_USER:
       return {
         ...state,
-        loading: true
+        loading: true,
+      };
+    case LIKE_SCREAM:
+      return {
+        ...state,
+        likes: [
+          {
+            userHandle: state.credentials.handle,
+            screamId: action.payload.screamId,
+          },
+        ],
+      };
+    case UNLIKE_SCREAM:
+      return {
+        ...state,
+        likes: state.likes.filter(
+          (like) => like.screamId === action.payload.screamId
+        ),
       };
     default:
       return state;
