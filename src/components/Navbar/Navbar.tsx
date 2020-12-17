@@ -1,29 +1,60 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
+import MyButton from "../../util/components/MyButton";
 // MUI imports
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import HomeIcon from "@material-ui/icons/Home";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 
-class Navbar extends React.Component {
+type Props = {
+  authenticated: boolean;
+};
+
+class Navbar extends React.Component<Props> {
   render() {
+    const { authenticated } = this.props;
     return (
       <AppBar>
-        <Toolbar className="nav-container" >
-          <Button color="inherit" component={Link} to="/">
-            Home
-          </Button>
-          <Button color="inherit" component={Link} to="/login">
-            Login
-          </Button>
-          <Button color="inherit" component={Link} to="/signup">
-            Signup
-          </Button>
+        <Toolbar className="nav-container">
+          {authenticated ? (
+            <Fragment>
+              <MyButton tip="Post a scream">
+                <AddIcon  />
+              </MyButton>
+              <Link to="/">
+                <MyButton tip="Home">
+                  <HomeIcon  />
+                </MyButton>
+              </Link>
+              <MyButton tip="Notifications">
+                <NotificationsIcon />
+              </MyButton>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Button color="inherit" component={Link} to="/">
+                Home
+              </Button>
+              <Button color="inherit" component={Link} to="/login">
+                Login
+              </Button>
+              <Button color="inherit" component={Link} to="/signup">
+                Signup
+              </Button>
+            </Fragment>
+          )}
         </Toolbar>
       </AppBar>
     );
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state: any) => ({
+  authenticated: state.user.authenticated,
+});
+
+export default connect(mapStateToProps)(Navbar);

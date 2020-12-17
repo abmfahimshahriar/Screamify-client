@@ -30,3 +30,26 @@ const mapStateToProps = (state: any) => ({
     mapActionsToProps
   )(withStyles(styles)(EditDetails));
   
+
+
+import React from "react";
+
+//redux
+import { connect } from "react-redux";
+
+type Props = {
+    children: any;
+    onClick: any;
+    tip: any;
+    btnClassName: any;
+    tipClassName: any;
+};
+
+const AuthRoute: React.FC<Props> = ({ children,onClick,tip,btnClassName,tipClassName }) => (
+    
+);
+
+const mapStateToProps = (state: any) => ({
+  authenticated: state.user.authenticated
+});
+export default connect(mapStateToProps)(AuthRoute);  

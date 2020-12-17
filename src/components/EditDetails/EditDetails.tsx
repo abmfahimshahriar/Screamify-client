@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { editDetailsStyle } from "./editDetailsStyles";
+import MyButton from "../../util/components/MyButton";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -72,11 +73,13 @@ class EditDetails extends React.Component<Props> {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title="Edit details" placement="top">
-          <IconButton onClick={this.handleOpen} className={classes.button}>
-            <Edit color="primary" />
-          </IconButton>
-        </Tooltip>
+        <MyButton
+          tip="Edit details"
+          onClick={this.handleOpen}
+          btnClassName={classes.button}
+        >
+          <Edit color="primary" />
+        </MyButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
