@@ -44,7 +44,6 @@ class login extends React.Component<Props & RouteProps, State> {
   }
   handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(this.state);
     const userData = {
       email: this.state.email,
       password: this.state.password,
