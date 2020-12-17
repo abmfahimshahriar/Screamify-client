@@ -1,14 +1,8 @@
 export const deleteScreamStyle = {
-    card: {
-      display: "flex",
-      marginBottom: 20,
-    },
-    image: {
-      minWidth: 200,
-      objectFit: 'cover' as const,
-    },
-    content: {
-      padding: 25,
-    },
+    deleteButton: {
+      position: 'absolute' as const,
+      top: '10%' as const,
+      left: '90%' as const
+    }
   };
   

@@ -1,5 +1,6 @@
 export const screamStyle = {
   card: {
+    position: 'relative' as const,
     display: "flex",
     marginBottom: 20,
   },

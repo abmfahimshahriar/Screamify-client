@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { screamStyle } from "./screamStyle";
 import MyButton from "../../util/components/MyButton";
+import DeleteScream from "../DeleteScream/DeleteScream";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
@@ -82,7 +83,7 @@ class Scream extends React.Component<Props> {
       </MyButton>
     );
     const deleteButton = authenticated && userHandle === handle ? (
-      <div></div>
+      <DeleteScream screamId={screamId}/>
     ) : null;
     return (
       <Card className={classes.card}>

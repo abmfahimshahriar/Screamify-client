@@ -3,6 +3,7 @@ import {
   LOADING_DATA,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
+  DELETE_SCREAM,
 } from "../types";
 interface State {
   screams: any[];
@@ -38,7 +39,14 @@ export default function (state = initialState, action: any) {
       return {
         ...state,
       };
-
+    case DELETE_SCREAM:
+      let ind = state.screams.findIndex(
+        (scream: any) => scream.screamId === action.payload
+      );
+      state.screams.splice(ind, 1);
+      return {
+        ...state,
+      };
     default:
       return state;
   }
