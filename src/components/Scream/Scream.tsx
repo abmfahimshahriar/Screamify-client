@@ -35,7 +35,7 @@ class Scream extends React.Component<Props> {
     if (
       this.props.user.likes &&
       this.props.user.likes.find(
-        (like:any) => like.screamId === this.props.scream.screamId
+        (like: any) => like.screamId === this.props.scream.screamId
       )
     )
       return true;
@@ -44,10 +44,10 @@ class Scream extends React.Component<Props> {
 
   likeScream = () => {
     this.props.likeScream(this.props.scream.screamId);
-  }
+  };
   unlikeScream = () => {
     this.props.unlikeScream(this.props.scream.screamId);
-  }
+  };
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -61,25 +61,29 @@ class Scream extends React.Component<Props> {
         commentCount,
         userHandle,
       },
-      user: {authenticated}
+      user: {
+        authenticated,
+        credentials: { handle },
+      },
     } = this.props;
     const likeButton = !authenticated ? (
       <MyButton tip="Like">
         <Link to="login">
-          <FavoriteBorder color="primary"/>
+          <FavoriteBorder color="primary" />
         </Link>
       </MyButton>
+    ) : this.likedScream() ? (
+      <MyButton tip="Unlike" onClick={this.unlikeScream}>
+        <FavoriteIcon color="primary" />
+      </MyButton>
     ) : (
-      this.likedScream() ? (
-        <MyButton tip="Unlike" onClick={this.unlikeScream}>
-          <FavoriteIcon color="primary"/>
-        </MyButton>
-      ) : (
-        <MyButton tip="Like" onClick={this.likeScream}>
-          <FavoriteBorder color="primary"/>
-        </MyButton>
-      )
-    )
+      <MyButton tip="Like" onClick={this.likeScream}>
+        <FavoriteBorder color="primary" />
+      </MyButton>
+    );
+    const deleteButton = authenticated && userHandle === handle ? (
+      <div></div>
+    ) : null;
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -96,6 +100,7 @@ class Scream extends React.Component<Props> {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
