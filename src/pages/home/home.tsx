@@ -7,28 +7,26 @@ import { ScreamModel } from "../../models/home";
 // import components
 import Scream from "../../components/Scream/Scream";
 import Profile from "../../components/Profile/Profile";
+
+// Redux
+import { connect } from "react-redux";
+import { getScreams } from "../../redux/actions/dataActions";
+
+type Props = {
+  getScreams: Function;
+  data: any;
+};
 interface State {
   screams: ScreamModel[];
 }
-class home extends React.Component<State> {
-  state: State = {
-    screams: [],
-  };
+class home extends React.Component<Props, State> {
   componentDidMount() {
-    axios
-      .get("/screams")
-      .then((res) => {
-        this.setState({
-          screams: res.data,
-        });
-      })
-      .catch((err) => {
-        console.error(err); 
-      });
+    this.props.getScreams();
   }
   render() {
-    let recentScreamsMarkup = this.state.screams.length > 0 ? (
-      this.state.screams.map((scream) => (
+    const { screams, loading } = this.props.data;
+    let recentScreamsMarkup = !loading ? (
+      screams.map((scream: any) => (
         <Scream key={scream.screamId} scream={scream} />
       ))
     ) : (
@@ -40,11 +38,17 @@ class home extends React.Component<State> {
           {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <Profile/>
+          <Profile />
         </Grid>
       </Grid>
     );
   }
 }
+const mapStateToProps = (state: any) => ({
+  data: state.data,
+});
 
-export default home;
+const mapActionsToProps = {
+  getScreams,
+};
+export default connect(mapStateToProps, mapActionsToProps)(home);
