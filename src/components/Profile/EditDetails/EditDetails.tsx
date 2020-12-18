@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { editDetailsStyle } from "./editDetailsStyles";
-import MyButton from "../../util/components/MyButton";
+import MyButton from "../../../util/components/MyButton";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -9,15 +9,13 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconButton from "@material-ui/core/IconButton";
 import Edit from "@material-ui/icons/Edit";
 
 // models
-import { Credentials } from "../../models/home";
+import { Credentials } from "../../../models/home";
 // redux
 import { connect } from "react-redux";
-import { editUserDetails } from "../../redux/actions/userActions";
+import { editUserDetails } from "../../../redux/actions/userActions";
 
 const styles = editDetailsStyle;
 

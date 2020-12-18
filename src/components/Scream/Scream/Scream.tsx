@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { screamStyle } from "./screamStyle";
-import MyButton from "../../util/components/MyButton";
+import MyButton from "../../../util/components/MyButton";
 import DeleteScream from "../DeleteScream/DeleteScream";
 import ScreamDialog from "../ScreamDialog/ScreamDialog";
 import LikeButton from "../LikeButton/LikeButton";
@@ -16,7 +16,7 @@ import Typography from "@material-ui/core/Typography";
 import ChatIcon from "@material-ui/icons/Chat";
 
 // import models
-import { ScreamModel } from "../../models/home";
+import { ScreamModel } from "../../../models/home";
 
 // Redux
 import { connect } from "react-redux";

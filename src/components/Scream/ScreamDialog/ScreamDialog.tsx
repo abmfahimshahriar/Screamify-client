@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { screamDialogStyle } from "./screamDialogStyle";
-import MyButton from "../../util/components/MyButton";
+import MyButton from "../../../util/components/MyButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import LikeButton from "../LikeButton/LikeButton";
@@ -19,7 +19,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 // redux
 import { connect } from "react-redux";
-import { getScream } from "../../redux/actions/dataActions";
+import { getScream } from "../../../redux/actions/dataActions";
 
 const styles = screamDialogStyle;
 

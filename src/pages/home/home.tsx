@@ -4,8 +4,8 @@ import Grid from "@material-ui/core/Grid";
 // import models
 import { ScreamModel } from "../../models/home";
 // import components
-import Scream from "../../components/Scream/Scream";
-import Profile from "../../components/Profile/Profile";
+import Scream from "../../components/Scream/Scream/Scream";
+import Profile from "../../components/Profile/Profile/Profile";
 
 // Redux
 import { connect } from "react-redux";

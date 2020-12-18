@@ -11,7 +11,7 @@ import home from "./pages/home/home";
 import login from "./pages/login/login";
 import signup from "./pages/signup/signup";
 // components
-import NavBar from "./components/Navbar/Navbar";
+import NavBar from "./components/Layout/Navbar/Navbar";
 import AuthRoute from "./util/components/AuthRoute";
 
 // redux

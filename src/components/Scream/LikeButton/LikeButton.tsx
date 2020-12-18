@@ -1,6 +1,6 @@
 import React from "react";
 import { likeButtonStyle } from "./likeButtonStyle";
-import MyButton from "../../util/components/MyButton";
+import MyButton from "../../../util/components/MyButton";
 import { Link } from "react-router-dom";
 
 // MUI imports
@@ -10,7 +10,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 // redux
 import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../../redux/actions/dataActions";
+import { likeScream, unlikeScream } from "../../../redux/actions/dataActions";
 
 const styles = likeButtonStyle;
 

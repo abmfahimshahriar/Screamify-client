@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import MyButton from "../../util/components/MyButton";
+import MyButton from "../../../util/components/MyButton";
 import { deleteScreamStyle } from "./deleteScreamStyle";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -10,7 +10,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 // redux
 import { connect } from "react-redux";
-import { deleteScream } from "../../redux/actions/dataActions";
+import { deleteScream } from "../../../redux/actions/dataActions";
 const styles = deleteScreamStyle;
 
 type Props = {

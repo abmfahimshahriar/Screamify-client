@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { profileStyle } from "./profileStyle";
 import EditDetails from "../EditDetails/EditDetails";
-import MyButton from "../../util/components/MyButton";
+import MyButton from "../../../util/components/MyButton";
 
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -16,13 +16,11 @@ import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import Edit from "@material-ui/icons/Edit";
 import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
 // import models
-import { UserData } from "../../models/home";
+import { UserData } from "../../../models/home";
 // redux
 import { connect } from "react-redux";
-import { uploadImage, logoutUser } from "../../redux/actions/userActions";
+import { uploadImage, logoutUser } from "../../../redux/actions/userActions";
 
 const styles = profileStyle;
 

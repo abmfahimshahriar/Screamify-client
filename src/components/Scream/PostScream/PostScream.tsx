@@ -1,6 +1,6 @@
 import React, { FormEvent, Fragment } from "react";
 import { postScreamStyle } from "./postScreamStyle";
-import MyButton from "../../util/components/MyButton";
+import MyButton from "../../../util/components/MyButton";
 
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -16,7 +16,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 // redux
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../../redux/actions/dataActions";
 const styles = postScreamStyle;
 
 type Props = {

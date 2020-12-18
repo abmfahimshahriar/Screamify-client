@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import MyButton from "../../util/components/MyButton";
-import PostScream from "../../components/PostScream/PostScream";
+import MyButton from "../../../util/components/MyButton";
+import PostScream from "../../Scream/PostScream/PostScream";
 // MUI imports
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
