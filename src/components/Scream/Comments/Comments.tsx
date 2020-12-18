@@ -21,13 +21,11 @@ class Comments extends React.Component<Props> {
   render() {
     let { classes, comments } = this.props;
     comments = comments.length > 0 ? comments : [];
-    return (
-      <Grid container spacing={2}>
-        {comments.map((comment: any,index:any) => {
-          const { body, createdAt, userImage, userHandle } = comment;
+    const singleComment = comments.map((comment: any,index:any) => {
+      const { body, createdAt, userImage, userHandle } = comment;
           return (
             <Fragment key={createdAt}>
-              <Grid item sm={12}>
+              <Grid item sm={12} >
                 <Grid container>
                   <Grid item sm={2}>
                     <img
@@ -58,9 +56,8 @@ class Comments extends React.Component<Props> {
               {index !== comments.length-1 && (<hr className={classes.visibleSeparator} />)}
             </Fragment>
           );
-        })}
-      </Grid>
-    );
+    });
+    return singleComment;
   }
 }
 

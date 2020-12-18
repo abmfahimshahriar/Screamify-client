@@ -19,7 +19,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 // redux
 import { connect } from "react-redux";
-import { getScream } from "../../../redux/actions/dataActions";
+import { getScream, clearErrors } from "../../../redux/actions/dataActions";
 
 const styles = screamDialogStyle;
 
@@ -30,6 +30,7 @@ type Props = {
   getScream: Function;
   scream: any;
   UI: any;
+  clearErrors: Function;
 };
 
 class ScreamDialog extends React.Component<Props> {
@@ -43,6 +44,7 @@ class ScreamDialog extends React.Component<Props> {
   };
   handleClose = () => {
     this.setState({ open: false });
+    this.props.clearErrors();
   };
   render() {
     const {
@@ -64,7 +66,7 @@ class ScreamDialog extends React.Component<Props> {
         <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={10}>
+      <Grid container spacing={0}>
         <Grid item sm={5}>
           <img src={userImage} alt="profile" className={classes.profileImage} />
         </Grid>
@@ -92,9 +94,7 @@ class ScreamDialog extends React.Component<Props> {
         </Grid>
         <hr className={classes.visibleSeparator} />
         <CommentForm screamId={screamId}/>
-        <div className={classes.comments}>
-          <Comments comments={comments} />
-        </div>
+        <Comments comments={comments} />
       </Grid>
     );
     return (
@@ -135,6 +135,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapActionsToProps = {
   getScream,
+  clearErrors,
 };
 
 export default connect(

@@ -33,7 +33,4 @@ export const screamDialogStyle = {
     marginTop: 50,
     marginBottom: 50,
   },
-  comments: {
-    padding: 24,
-  }
 };
