@@ -14,15 +14,16 @@ const styles = commentsStyle;
 
 type Props = {
   classes: any;
-  comments: any;
+  comments: any[];
 };
 
 class Comments extends React.Component<Props> {
   render() {
-    const { classes, comments } = this.props;
+    let { classes, comments } = this.props;
+    comments = comments.length > 0 ? comments : [];
     return (
       <Grid container spacing={2}>
-        {comments.map((comment: any) => {
+        {comments.map((comment: any,index:any) => {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
             <Fragment key={createdAt}>
@@ -54,7 +55,7 @@ class Comments extends React.Component<Props> {
                   </Grid>
                 </Grid>
               </Grid>
-              <hr className={classes.visibleSeparator} />
+              {index !== comments.length-1 && (<hr className={classes.visibleSeparator} />)}
             </Fragment>
           );
         })}
