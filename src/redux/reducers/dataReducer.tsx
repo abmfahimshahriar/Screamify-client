@@ -6,6 +6,7 @@ import {
   DELETE_SCREAM,
   POST_SCREAM,
   SET_SCREAM,
+  SUBMIT_COMMENT,
 } from "../types";
 interface State {
   screams: any[];
@@ -32,19 +33,20 @@ export default function (state = initialState, action: any) {
         screams: action.payload,
         loading: false,
       };
-      case SET_SCREAM:
-        return {
-          ...state,
-          scream: action.payload,
-          loading: false,
-        };
+    case SET_SCREAM:
+      return {
+        ...state,
+        scream: action.payload,
+        loading: false,
+      };
     case LIKE_SCREAM:
     case UNLIKE_SCREAM:
       let index = state.screams.findIndex(
         (scream: any) => scream.screamId === action.payload.screamId
       );
       state.screams[index] = action.payload;
-      if(state.scream.screamId === action.payload.screamId) state.scream = action.payload;
+      if (state.scream.screamId === action.payload.screamId)
+        state.scream = action.payload;
       return {
         ...state,
       };
@@ -61,7 +63,14 @@ export default function (state = initialState, action: any) {
         ...state,
         screams: [action.payload, ...state.screams],
       };
-    
+    case SUBMIT_COMMENT:
+      return {
+        ...state,
+        scream: {
+          ...state.scream,
+          comments: [action.payload, ...state.scream.comments]
+        },
+      };
     default:
       return state;
   }
