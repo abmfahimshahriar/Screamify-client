@@ -24,6 +24,15 @@ export const screamDialogStyle = {
   },
   dialogContent: {
     padding: 20,
-    overflow: "hidden" as const, 
+    overflow: "hidden" as const,
+  },
+  expandButton: {
+    position: "absolute" as const,
+    left: "90%",
+  },
+  progress: {
+    textAlign: 'center' as const,
+    marginTop: 50,
+    marginBottom: 50,
   }
 };

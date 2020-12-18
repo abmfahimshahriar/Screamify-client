@@ -56,7 +56,9 @@ class ScreamDialog extends React.Component<Props> {
       UI: { loading },
     } = this.props;
     const dialogMarkup = loading ? (
-      <CircularProgress size={200} />
+      <div className={classes.progress}>
+          <CircularProgress size={200} thickness={2} />
+      </div>
     ) : (
       <Grid container spacing={10}>
         <Grid item sm={5}>
