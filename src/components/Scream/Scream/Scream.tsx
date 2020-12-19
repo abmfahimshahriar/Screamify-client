@@ -27,6 +27,7 @@ type Props = {
   scream: ScreamModel;
   classes: any;
   user: any;
+  openDialog?: any;
 };
 
 class Scream extends React.Component<Props> {
@@ -80,7 +81,7 @@ class Scream extends React.Component<Props> {
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} Comments</span>
-          <ScreamDialog screamId={screamId} userHandle={userHandle} />
+          <ScreamDialog screamId={screamId} userHandle={userHandle} openDialog={this.props.openDialog}/>
         </CardContent>
       </Card>
     );

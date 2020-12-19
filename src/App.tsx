@@ -61,6 +61,7 @@ function App() {
                   component={login}
                 />
                 <Route exact path="/users/:handle" component={userProfile} />
+                <Route exact path="/users/:handle/scream/:screamId" component={userProfile} />
               </Switch>
             </div>
           </Router>

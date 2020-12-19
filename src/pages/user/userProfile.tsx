@@ -20,13 +20,17 @@ type Props = {
 };
 interface State {
   profile: any;
+  screamIdParam: string;
 }
 class userProfile extends React.Component<Props, State> {
   state: State = {
     profile: null,
+    screamIdParam: "",
   };
   componentDidMount() {
     const handle = this.props.match.params.handle;
+    const screamId = this.props.match.params.screamId;
+    if (screamId) this.setState({ screamIdParam: screamId });
     this.props.getUserData(handle);
     axios
       .get(`/user/${handle}`)
@@ -39,13 +43,19 @@ class userProfile extends React.Component<Props, State> {
   }
   render() {
     const { screams, loading } = this.props.data;
+    const {screamIdParam} = this.state;
     const screamsMarkup = !loading ? (
       screams.length === 0 ? (
         <p>No screams for this user</p>
-      ) : (
+      ) : !screamIdParam ? (
         screams.map((scream: any) => (
           <Scream key={scream.screamId} scream={scream} />
         ))
+      ) : (
+        screams.map((scream:any) => {
+          if(scream.screamId !== screamIdParam) return <Scream key={scream.screamId} scream={scream} />
+          else return <Scream key={scream.screamId} scream={scream} openDialog/>
+        })
       )
     ) : (
       <p>Loading...</p>
