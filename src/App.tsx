@@ -21,10 +21,11 @@ import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { logoutUser, getUserData } from "./redux/actions/userActions";
 
+axios.defaults.baseURL =
+  "https://us-central1-screamify-ebb96.cloudfunctions.net/api";
 
 const theme = createMuiTheme(globalTheme);
 
-;
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken: any = jwtDecode(token);
@@ -32,7 +33,7 @@ if (token) {
     store.dispatch(logoutUser());
     window.location.href = "/login";
   } else {
-    store.dispatch({type : SET_AUTHENTICATED});
+    store.dispatch({ type: SET_AUTHENTICATED });
     axios.defaults.headers.common["Authorization"] = token;
     store.dispatch(getUserData());
   }
@@ -48,20 +49,15 @@ function App() {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                <AuthRoute
-                  path="/login"
-                  component={login}
-                />
-                <AuthRoute
-                  path="/signup"
-                  component={signup}
-                />
-                <AuthRoute
-                  path="/users/login"
-                  component={login}
-                />
+                <AuthRoute path="/login" component={login} />
+                <AuthRoute path="/signup" component={signup} />
+                <AuthRoute path="/users/login" component={login} />
                 <Route exact path="/users/:handle" component={userProfile} />
-                <Route exact path="/users/:handle/scream/:screamId" component={userProfile} />
+                <Route
+                  exact
+                  path="/users/:handle/scream/:screamId"
+                  component={userProfile}
+                />
               </Switch>
             </div>
           </Router>

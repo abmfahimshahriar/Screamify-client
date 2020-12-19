@@ -55,6 +55,6 @@
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
     "redux-devtools-extension": "^2.13.8"
-  },
-  "proxy": "https://us-central1-screamify-ebb96.cloudfunctions.net/api"
+  }
+  
 }
