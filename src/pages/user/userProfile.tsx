@@ -1,5 +1,5 @@
 import React from "react";
-import { userStyle } from "./userStyle";
+import { userStyle } from "./userProfileStyle";
 import axios from "axios";
 import Scream from "../../components/Scream/Scream/Scream";
 import StaticProfile from "../../components/Profile/StaticProfile/StaticProfile";
