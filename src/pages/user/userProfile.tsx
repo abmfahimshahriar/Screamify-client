@@ -3,6 +3,7 @@ import { userStyle } from "./userProfileStyle";
 import axios from "axios";
 import Scream from "../../components/Scream/Scream/Scream";
 import StaticProfile from "../../components/Profile/StaticProfile/StaticProfile";
+import ScreamSkeleton from "../../util/components/ScreamSkeleton/ScreamSleleton";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
@@ -58,7 +59,7 @@ class userProfile extends React.Component<Props, State> {
         })
       )
     ) : (
-      <p>Loading...</p>
+      <ScreamSkeleton/>
     );
     return (
       <Grid container spacing={2}>

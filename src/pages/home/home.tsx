@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-
+import ScreamSkeleton from "../../util/components/ScreamSkeleton/ScreamSleleton";
 // import models
 import { ScreamModel } from "../../models/home";
 // import components
@@ -29,7 +29,7 @@ class home extends React.Component<Props, State> {
         <Scream key={scream.screamId} scream={scream} />
       ))
     ) : (
-      <p>Loading...</p>
+      <ScreamSkeleton/>
     );
     return (
       <Grid container spacing={2}>
