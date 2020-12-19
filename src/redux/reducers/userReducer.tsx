@@ -5,6 +5,7 @@ import {
   SET_UNAUTHENTICATED,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
+  MARK_NOTIFICATIONS_READ,
 } from "../types";
 interface Like {
   userHandle: string;
@@ -75,6 +76,11 @@ export default function (state = initialState, action: any) {
           (like) => like.screamId !== action.payload.screamId
         ),
       };
+    case MARK_NOTIFICATIONS_READ:
+      state.notifications.forEach((noti) => (noti.read = true));
+      return {
+        ...state
+      }
     default:
       return state;
   }

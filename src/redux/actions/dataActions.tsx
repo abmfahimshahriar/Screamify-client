@@ -11,6 +11,7 @@ import {
   SET_SCREAM,
   STOP_LOADING_UI,
   SUBMIT_COMMENT,
+  MARK_NOTIFICATIONS_READ,
 } from "../types";
 import axios from "axios";
 
@@ -148,6 +149,20 @@ export const getUserData = (userHandle: string) => (dispatch: any) => {
         payload: null,
       });
     });
+};
+
+// marks notifications read
+export const markNotificationsRead = (notificationIds: any) => (
+  dispatch: any
+) => {
+  axios
+    .post("/notifications", notificationIds)
+    .then((res) => {
+      dispatch({
+        type: MARK_NOTIFICATIONS_READ,
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 export const clearErrors = () => (dispatch: any) => {
