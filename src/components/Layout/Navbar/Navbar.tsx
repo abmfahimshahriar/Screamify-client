@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MyButton from "../../../util/components/MyButton";
 import PostScream from "../../Scream/PostScream/PostScream";
+import Notifications from "../Notifications/Notifications";
 // MUI imports
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import HomeIcon from "@material-ui/icons/Home";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 
 type Props = {
   authenticated: boolean;
@@ -28,9 +28,7 @@ class Navbar extends React.Component<Props> {
                   <HomeIcon  />
                 </MyButton>
               </Link>
-              <MyButton tip="Notifications">
-                <NotificationsIcon />
-              </MyButton>
+              <Notifications/>
             </Fragment>
           ) : (
             <Fragment>
