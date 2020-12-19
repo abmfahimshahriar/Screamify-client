@@ -10,6 +10,7 @@ import axios from "axios";
 import home from "./pages/home/home";
 import login from "./pages/login/login";
 import signup from "./pages/signup/signup";
+import userProfile from "./pages/user/user";
 // components
 import NavBar from "./components/Layout/Navbar/Navbar";
 import AuthRoute from "./util/components/AuthRoute";
@@ -55,6 +56,7 @@ function App() {
                   path="/signup"
                   component={signup}
                 />
+                <Route exact path="/users/:handle" component={userProfile} />
               </Switch>
             </div>
           </Router>

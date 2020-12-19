@@ -68,7 +68,7 @@ class CommentForm extends React.Component<Props, State> {
           <Button
             type="submit"
             variant="contained"
-            color="secondary"
+            color="primary"
             className={classes.submitButton}
           >
             Submit
