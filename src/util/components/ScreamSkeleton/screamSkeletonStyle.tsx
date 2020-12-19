@@ -33,7 +33,7 @@ export const screamSkeletonStyle = {
     marginBottom: 10,
   },
   halfLine: {
-    width: '90%' as const,
+    width: '50%' as const,
     height: 15,
     backgroundColor: "rgba(0,0,0,0.6)",
     marginBottom: 10,

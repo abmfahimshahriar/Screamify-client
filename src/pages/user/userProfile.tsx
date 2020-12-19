@@ -4,6 +4,7 @@ import axios from "axios";
 import Scream from "../../components/Scream/Scream/Scream";
 import StaticProfile from "../../components/Profile/StaticProfile/StaticProfile";
 import ScreamSkeleton from "../../util/components/ScreamSkeleton/ScreamSleleton";
+import ProfileSkeleton from "../../util/components/ProfileSkeleton/ProfileSkeleton";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
@@ -68,7 +69,7 @@ class userProfile extends React.Component<Props, State> {
         </Grid>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (
-            <p>Loading profile...</p>
+            <ProfileSkeleton/>
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}

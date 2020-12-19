@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { profileStyle } from "./profileStyle";
 import EditDetails from "../EditDetails/EditDetails";
 import MyButton from "../../../util/components/MyButton";
-
+import ProfileSkeleton from "../../../util/components/ProfileSkeleton/ProfileSkeleton";
 // MUI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Paper from "@material-ui/core/Paper";
@@ -143,7 +143,7 @@ class Profile extends React.Component<Props> {
         </Paper>
       )
     ) : (
-      <p>Loading....</p>
+      <ProfileSkeleton/>
     );
     return profileMarkup;
   }
